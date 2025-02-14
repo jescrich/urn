@@ -1,6 +1,6 @@
 {
   "name": "@jescrich/urn",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "URN",
   "license": "MIT",
   "author": "José Escrich",
@@ -24,9 +24,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "peerDependencies": {
-   
-  },
+  "peerDependencies": {},
   "dependencies": {
     "uuid": "^11.0.5"
   },
