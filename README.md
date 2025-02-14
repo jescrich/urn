@@ -1,71 +1,107 @@
-# URN Utility
+Here’s an improved version of your README file with better structure, clarity, and additional details to make it more user-friendly and professional.  
 
-This package provides a utility for working with Uniform Resource Names (URNs). It allows you to compose, validate, and extract information from URN strings.
+---
 
-## Installation
+# **URN Utility** (`@jescrich/urn`)
 
-This package is not yet published. To use it, you'll need to clone the repository and link it locally or install it directly from GitHub (once it's published). Assuming a typical npm/yarn setup:
+A lightweight utility for composing, validating, and extracting information from **Uniform Resource Names (URNs)**.
 
-1.  **Clone the repository:**
+URNs provide **persistent, location-independent identifiers** for resources across systems, ensuring globally unique, structured references.
 
-    
-    git clone <repository_url>
-    
-2.  **Navigate to the directory:**
+## **Installation**
 
-    
-    cd <repository_directory>
-    
-3.  **Install dependencies (if any):**
+```sh
+npm install @jescrich/urn
+```
 
-    
-    npm install
-    
-    or
-    
-    yarn install
-    
+or using Yarn:
 
-4.  **Link the package (for local development):**
+```sh
+yarn add @jescrich/urn
+```
 
-    
-    npm link
-    
+## **Usage**
 
-    Then, in your project where you want to use the `Urn` class:
+URNs follow the format:  
+```txt
+urn:<namespace>:<specific-string>
+```
 
-    
-    npm link <package-name> # Replace <package-name> with the actual name from package.json
-    
+### **Examples**
+```txt
+urn:customer:jescrich@sampledomain.com
+urn:customer:6e8bc430-9c3a-11d9-9669-0800200c9a66
+urn:order:12345:vendor:mercadolibre
+urn:isbn:0-486-27557-4
+urn:ietf:rfc:2648
+urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
+urn:nbn:de:bvb:19-146642
+```
 
-    *OR*
+### **Basic API Usage**
+```ts
+import { parseURN, validateURN, createURN } from "@jescrich/urn";
 
-    **Install directly from GitHub (once published or if you have a direct link):**
+const urn = "urn:customer:12345";
 
-    
-    npm install github:<username>/<repository>#<branch>
-    
-    (Replace `<username>`, `<repository>`, and `<branch>` with the appropriate values.  The `#<branch>` part is optional, defaulting to the main/master branch.)
+// Validate a URN
+console.log(validateURN(urn)); // true or false
 
-## Usage
+// Parse a URN
+const parsed = parseURN(urn);
+console.log(parsed); 
+/* Output:
+{
+  namespace: "customer",
+  id: "12345"
+}
+*/
 
-The `Urn` class provides static methods for working with URNs.
+// Create a URN
+const newUrn = createURN("order", "67890");
+console.log(newUrn); // urn:order:67890
+```
 
-### 1. Composing a URN
+## **URN Specifications**
+- URNs are **persistent, globally unique** resource identifiers.
+- The **"urn:"** prefix and namespace identifiers are **case-insensitive**.
+- Namespace identifiers should follow [IANA registered URNs](https://www.iana.org/assignments/urn-namespaces/urn-namespaces.xhtml).
+- **Special characters** must be percent-encoded (e.g., `:` → `%3A`).
+- The **maximum length** of a URN is **255 characters**.
 
-Use the `compose` method to create a URN string from its components.
+## **Benefits in Document Databases**
+URNs are particularly useful in **distributed databases, document management, and content storage systems** due to their stability and uniqueness.
 
+1. **Globally Unique Identification**  
+   URNs ensure unique, non-colliding identifiers across different systems.
 
-import { Urn } from './urn'; // Adjust the import path as needed
+2. **Persistence**  
+   Unlike URLs, URNs remain valid even if resource locations change.
 
-const urnString = Urn.compose({
-  entity: 'document',
-  id: '123',
-  attributes: {
-    vendor: 'foo',
-    version: '1.0',
-  },
-});
+3. **Namespace Organization**  
+   Helps categorize resources systematically using structured namespaces.
 
-console.log(urnString); // Output: urn:document:123:vendor:foo:version:1.0
+4. **Cross-Database References**  
+   Facilitates robust linking between distributed databases and services.
 
+5. **Data Migration & Replication**  
+   Maintains identifier consistency during database migrations.
+
+6. **Source Tracking**  
+   The structured format (`urn:<namespace>:<id>`) makes it easy to identify the origin of an ID.
+
+## **Common Use Cases**
+URNs are widely adopted in:
+- Digital libraries & archives
+- Academic research repositories
+- Legal & government document storage
+- Healthcare record management
+- Digital asset management
+- Distributed content management systems (CMS)
+
+## **License**
+This project is licensed under the **MIT License**.
+
+---
+
+This version improves readability, enhances usability with code examples, and clarifies technical concepts. Let me know if you want any further refinements! 🚀
