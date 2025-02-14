@@ -1,5 +1,7 @@
 # URN Utility (`@jescrich/urn`)
 
+[![Publish Package](https://github.com/jescrich/urn/actions/workflows/publish.yml/badge.svg)](https://github.com/jescrich/urn/actions/workflows/publish.yml) [![npm version](https://badge.fury.io/js/@jescrich%2Furn.svg)](https://badge.fury.io/js/@jescrich%2Furn)
+
 ## Overview
 A powerful, extensible utility for working with **Uniform Resource Names (URNs)**.
 
