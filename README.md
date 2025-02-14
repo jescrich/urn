@@ -1,4 +1,5 @@
 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+  <img src="https://media.licdn.com/dms/image/v2/D4D03AQHxXbXeM_z1DA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1727299483731?e=1744848000&v=beta&t=IqXJPILyd7pGjiDnPoMXoo4CpTQ_hrVdLQLNcNyDPVI" width="100" height="100" style="border-radius: 50%;" align="right" />
 <div>
 
 # URN Utility (`@jescrich/urn`)
@@ -7,7 +8,7 @@
 
 Author: José Escrich https://joseescrich.com
 </div>
-<img src="https://media.licdn.com/dms/image/v2/D4D03AQHxXbXeM_z1DA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1727299483731?e=1744848000&v=beta&t=IqXJPILyd7pGjiDnPoMXoo4CpTQ_hrVdLQLNcNyDPVI" width="100" height="100" style="border-radius: 50%;" align="right" />
+
 </div>
 
 
