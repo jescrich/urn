@@ -1,8 +1,9 @@
 # **URN Utility** (`@jescrich/urn`)
 
-A lightweight utility for composing, validating, and extracting information from **Uniform Resource Names (URNs)**.
+[![Publish Package](https://github.com/jescrich/urn/actions/workflows/publish.yml/badge.svg)](https://github.com/jescrich/urn/actions/workflows/publish.yml) [![npm version](https://badge.fury.io/js/@jescrich%2Furn.svg)](https://badge.fury.io/js/@jescrich%2Furn)
 
-URNs provide **persistent, location-independent identifiers** for resources across systems, ensuring globally unique, structured references.
+A lightweight utility for composing, validating, and extracting information from **Uniform Resource Names (URNs)**.  
+URNs provide **persistent, structured identifiers** for resources across systems.
 
 ## **Installation**
 
@@ -20,7 +21,7 @@ yarn add @jescrich/urn
 
 URNs follow the format:  
 ```txt
-urn:<namespace>:<specific-string>
+urn:<entity>:<id>[:<key>:<value>]*
 ```
 
 ### **Examples**
@@ -28,35 +29,75 @@ urn:<namespace>:<specific-string>
 urn:customer:jescrich@sampledomain.com
 urn:customer:6e8bc430-9c3a-11d9-9669-0800200c9a66
 urn:order:12345:vendor:mercadolibre
+urn:document:abc123:type:pdf:author:john_doe
 urn:isbn:0-486-27557-4
-urn:ietf:rfc:2648
 urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
 urn:nbn:de:bvb:19-146642
 ```
 
-### **Basic API Usage**
+---
+
+## **API Reference**
+
+### **1. Compose a URN**
+Create a URN string with an entity, ID, and optional key-value attributes.
+
 ```ts
-import { parseURN, validateURN, createURN } from "@jescrich/urn";
+import { Urn } from "@jescrich/urn";
 
-const urn = "urn:customer:12345";
+const urn = Urn.compose({ entity: "order", id: "12345", attributes: { vendor: "amazon", status: "shipped" } });
+console.log(urn); 
+// Output: urn:order:12345:vendor:amazon:status:shipped
+```
 
-// Validate a URN
-console.log(validateURN(urn)); // true or false
+---
 
-// Parse a URN
-const parsed = parseURN(urn);
-console.log(parsed); 
+### **2. Extract Information from a URN**
+#### **Get the entity type**
+```ts
+const entity = Urn.entity("urn:order:12345");
+console.log(entity); // Output: order
+```
+
+#### **Get the unique identifier**
+```ts
+const id = Urn.id("urn:order:12345");
+console.log(id); // Output: 12345
+```
+
+#### **Retrieve a specific attribute**
+```ts
+const vendor = Urn.value("urn:order:12345:vendor:ebay", "vendor");
+console.log(vendor); // Output: ebay
+```
+
+#### **Retrieve all attributes as an object**
+```ts
+const attributes = Urn.getAllAttributes("urn:document:abc123:type:pdf:author:john_doe");
+console.log(attributes); 
 /* Output:
 {
-  namespace: "customer",
-  id: "12345"
+  type: "pdf",
+  author: "john_doe"
 }
 */
-
-// Create a URN
-const newUrn = createURN("order", "67890");
-console.log(newUrn); // urn:order:67890
 ```
+
+#### **Extract the vendor specifically**
+```ts
+const vendor = Urn.vendor("urn:order:5678:vendor:shopify");
+console.log(vendor); // Output: shopify
+```
+
+---
+
+### **3. Validate URNs**
+```ts
+console.log(Urn.isValid("urn:order:12345")); // Output: true
+console.log(Urn.isValid("invalid-string")); // Output: false
+```
+
+---
 
 ## **URN Specifications**
 - URNs are **persistent, globally unique** resource identifiers.
@@ -64,6 +105,8 @@ console.log(newUrn); // urn:order:67890
 - Namespace identifiers should follow [IANA registered URNs](https://www.iana.org/assignments/urn-namespaces/urn-namespaces.xhtml).
 - **Special characters** must be percent-encoded (e.g., `:` → `%3A`).
 - The **maximum length** of a URN is **255 characters**.
+
+---
 
 ## **Benefits in Document Databases**
 URNs are particularly useful in **distributed databases, document management, and content storage systems** due to their stability and uniqueness.
@@ -86,6 +129,8 @@ URNs are particularly useful in **distributed databases, document management, an
 6. **Source Tracking**  
    The structured format (`urn:<namespace>:<id>`) makes it easy to identify the origin of an ID.
 
+---
+
 ## **Common Use Cases**
 URNs are widely adopted in:
 - Digital libraries & archives
@@ -95,9 +140,7 @@ URNs are widely adopted in:
 - Digital asset management
 - Distributed content management systems (CMS)
 
-## **License**
-This project is licensed under the **MIT License**.
-
 ---
 
-This version improves readability, enhances usability with code examples, and clarifies technical concepts. Let me know if you want any further refinements! 🚀
+## **License**
+This project is licensed under the **MIT License**.
