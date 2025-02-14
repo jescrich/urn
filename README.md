@@ -1,7 +1,3 @@
-Here’s an improved version of your README file with better structure, clarity, and additional details to make it more user-friendly and professional.  
-
----
-
 # **URN Utility** (`@jescrich/urn`)
 
 A lightweight utility for composing, validating, and extracting information from **Uniform Resource Names (URNs)**.
