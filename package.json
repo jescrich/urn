@@ -54,5 +54,35 @@
   },
   "_moduleAliases": {
     "@this/*": "*"
-  }
+  },
+  "keywords": [
+    "urn",
+    "uniform-resource-name",
+    "unique-identifier",
+    "namespace-identifier",
+    "persistent-identifier",
+    "id-generation",
+    "typescript",
+    "javascript",
+    "npm-package",
+    "nodejs",
+    "library",
+    "uuid-alternative",
+    "string-encoding",
+    "custom-identifiers",
+    "resource-naming",
+    "data-persistence",
+    "system-interoperability",
+    "open-source",
+    "registry",
+    "uris"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jescrich/urn"
+  },
+  "bugs": {
+    "url": "https://github.com/jescrich/urn/issues"
+  },
+  "homepage": "https://github.com/jescrich/urn#readme"
 }
