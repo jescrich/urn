@@ -17,6 +17,10 @@ A powerful, extensible utility for working with **Uniform Resource Names (URNs)*
 
 This package allows you to **compose, validate, parse, transform, and manipulate URNs** efficiently. It supports attribute management, UUID generation, normalization, and extensibility for custom namespace validation.
 
+- [Documentation](https://jescrich.github.io/libraries/docs/urn/intro)
+- [Introduction to URNs](https://jescrich.github.io/libraries/docs/urn/why)
+- [Usage on Mongo](https://jescrich.github.io/libraries/docs/urn/mongo)
+
 ## Installation
 
 ```sh
