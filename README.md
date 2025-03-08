@@ -1,7 +1,3 @@
-<div style="display: flex; justify-content: space-between; align-items: flex-start;">
-  <img src="https://media.licdn.com/dms/image/v2/D4D03AQHxXbXeM_z1DA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1727299483731?e=1744848000&v=beta&t=IqXJPILyd7pGjiDnPoMXoo4CpTQ_hrVdLQLNcNyDPVI" width="100" height="100" style="border-radius: 50%;" align="right" />
-<div>
-
 # URN Utility (`@jescrich/urn`)
 
 [![Publish Package](https://github.com/jescrich/urn/actions/workflows/publish.yml/badge.svg)](https://github.com/jescrich/urn/actions/workflows/publish.yml) [![npm version](https://badge.fury.io/js/@jescrich%2Furn.svg)](https://badge.fury.io/js/@jescrich%2Furn)
